@@ -1,0 +1,140 @@
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta http-equiv="Content-Style-Type" content="text/css" />
+  <meta name="generator" content="pandoc" />
+  <title></title>
+  <style type="text/css">
+      code{white-space: pre-wrap;}
+      span.smallcaps{font-variant: small-caps;}
+      span.underline{text-decoration: underline;}
+      div.column{display: inline-block; vertical-align: top; width: 50%;}
+  </style>
+<link rel="stylesheet" href="../..//intel_styles.css" type="text/css" />
+</head>
+<body>
+<div id="banner">
+    <div id="bannerblock">
+      <img src="../..//intel_logo.png" class="intellogo">
+      <h1 class="title">Overview of OpenVINO&trade; toolkit Pre-trained Models</h1>
+    </div>
+  </div>
+<div id="contentblock">
+<h1 id="face-reidentification-retail-0001">face-reidentification-retail-0001</h1>
+<h2 id="use-case-and-high-level-description">Use Case and High-Level Description</h2>
+<p>This is a lightweight net for face reidentification. It is based on the RMNet backbone that includes depth-wise convolutions to reduce the amount of computations for the 3x3 convolution block. After the backbone, global max pooling and 1x1 convolution block create the final embedding vector. The model produces feature vectors that are close in cosine distance for similar faces and far for different faces.</p>
+<h2 id="example">Example</h2>
+<div class="figure">
+<img src="./face-reidentification-retail-0001.png" />
+
+</div>
+<h2 id="specification">Specification</h2>
+<table>
+<thead>
+<tr class="header">
+<th align="left">Metric</th>
+<th align="left">Value</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">LFW accuracy</td>
+<td align="left">0.9892</td>
+</tr>
+<tr class="even">
+<td align="left">Face location requirements</td>
+<td align="left">Tight aligned crop</td>
+</tr>
+<tr class="odd">
+<td align="left">GFlops</td>
+<td align="left">0.19</td>
+</tr>
+<tr class="even">
+<td align="left">MParams</td>
+<td align="left">0.59</td>
+</tr>
+<tr class="odd">
+<td align="left">Source framework</td>
+<td align="left">Caffe*</td>
+</tr>
+</tbody>
+</table>
+<p>LFW metric is the accuracy in the pairwise reidentification test. See the full <a href="http://vis-www.cs.umass.edu/lfw/">benchmark description</a> for details.</p>
+<p>The model achieves the best results if an input face is frontally oriented and aligned. Face image is aligned if five keypoints (left eye, right eye, tip of nose, left lip corner, right lip corner) are located in the following points in normalized coordinates [0,1]x[0,1]:</p>
+<pre><code>[(0.31556875000000000, 0.4615741071428571),
+ (0.68262291666666670, 0.4615741071428571),
+ (0.50026249999999990, 0.6405053571428571),
+ (0.34947187500000004, 0.8246919642857142),
+ (0.65343645833333330, 0.8246919642857142)]</code></pre>
+<p>To align the face, use a landmarks regression model: using regressed points and the given reference landmarks, build an affine transformation to transform regressed points to the reference ones and apply this transformation to the input face image.</p>
+<h2 id="performance-fps">Performance (FPS)</h2>
+<h3 id="configuration-1-ubuntu-16.04-intel-core-i5-6500-cpu-2.90ghz-fixed-gpu-gt2-1.00ghz-fixed-ddr4-pc170002133mhz">Configuration #1: Ubuntu* 16.04, Intel® Core™ i5-6500 CPU @ 2.90GHz fixed, GPU GT2 @ 1.00GHz fixed, DDR4 PC17000/2133MHz</h3>
+<table style="width:100%;">
+<colgroup>
+<col width="14%" />
+<col width="21%" />
+<col width="25%" />
+<col width="25%" />
+<col width="12%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th align="left">Caffe* CPU</th>
+<th align="left">Inference Engine CPU</th>
+<th align="left">Inference Engine GPU FP16</th>
+<th align="left">Inference Engine GPU FP32</th>
+<th align="left">OpenCV CPU</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">17.27</td>
+<td align="left">651.79</td>
+<td align="left">134.76</td>
+<td align="left">132.26</td>
+<td align="left">97.0</td>
+</tr>
+</tbody>
+</table>
+<h3 id="configuration-2-intel-movidius-myriad-2-ncsma2450-intel-core-i5-6500-cpu-2.90ghz-fixed">Configuration #2: Intel® Movidius™ Myriad™ 2 NCS/MA2450, Intel® Core™ i5-6500 CPU @ 2.90GHz fixed</h3>
+<table>
+<thead>
+<tr class="header">
+<th align="left">Inference Engine MYRIAD FP16</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">29.15</td>
+</tr>
+</tbody>
+</table>
+<h3 id="performance-disclaimer">Performance Disclaimer</h3>
+<p>The benchmark results reported above may need to be revised as additional testing is conducted. The results depend on the specific platform configurations and workloads utilized in the testing, and may not be applicable to any particular user’s components, computer system or workloads. The results are not necessarily representative of other benchmarks and other benchmark results may show greater or lesser impact from mitigations.</p>
+<p>Software and workloads used in performance tests may have been optimized for performance only on Intel microprocessors. Performance tests, such as SYSmark and MobileMark, are measured using specific computer systems, components, software, operations and functions. Any change to any of those factors may cause the results to vary. You should consult other information and performance tests to assist you in fully evaluating your contemplated purchases, including the performance of that product when combined with other products. For more complete information visit www.intel.com/benchmarks.</p>
+<h3 id="optimization-notice">Optimization Notice</h3>
+<p>Intel's compilers may or may not optimize to the same degree for non-Intel microprocessors for optimizations that are not unique to Intel microprocessors. These optimizations include SSE2, SSE3, and SSSE3 instruction sets and other optimizations. Intel does not guarantee the availability, functionality, or effectiveness of any optimization on microprocessors not manufactured by Intel. Microprocessor-dependent optimizations in this product are intended for use with Intel microprocessors. Certain optimizations not specific to Intel microarchitecture are reserved for Intel microprocessors. Please refer to the applicable product User and Reference Guides for more information regarding the specific instruction sets covered by this notice.</p>
+<p>Notice revision #20110804</p>
+<h2 id="inputs">Inputs</h2>
+<ol style="list-style-type: decimal">
+<li>Name: &quot;data&quot; , shape: [1x3x128x128] - An input image in the format [BxCxHxW], where:
+<ul>
+<li>B - batch size</li>
+<li>C - number of channels</li>
+<li>H - image height</li>
+<li>W - image width</li>
+</ul></li>
+</ol>
+<p>Expected color order is RGB.</p>
+<h2 id="outputs">Outputs</h2>
+<p>The net outputs a blob with the shape [1, 128], containing a row-vector of 128 floating point values. Outputs on different images are comparable in cosine distance.</p>
+<p>Output layer name in Inference Engine/Caffe formats: <code>emb_output</code></p>
+<h2 id="legal-information">Legal Information</h2>
+<p>Intel, the Intel logo, Intel Atom, Intel Core, Intel Xeon Phi, VTune and Xeon are trademarks of Intel Corporation in the U.S. and/or other countries.</p>
+<p>*Other names and brands may be claimed as the property of others.</p>
+<p>Copyright 2018 Intel Corporation.</p>
+<p>This software and the related documents are Intel copyrighted materials, and your use of them is governed by the express license under which they were provided to you (License). Unless the License provides otherwise, you may not use, modify, copy, publish, distribute, disclose or transmit this software or the related documents without Intel's prior written permission.</p>
+<p>This software and the related documents are provided as is, with no express or implied warranties, other than those that are expressly stated in the License.</p>
+</div>
+</body>
+</html>

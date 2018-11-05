@@ -1,0 +1,183 @@
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta http-equiv="Content-Style-Type" content="text/css" />
+  <meta name="generator" content="pandoc" />
+  <title></title>
+  <style type="text/css">
+      code{white-space: pre-wrap;}
+      span.smallcaps{font-variant: small-caps;}
+      span.underline{text-decoration: underline;}
+      div.column{display: inline-block; vertical-align: top; width: 50%;}
+  </style>
+<link rel="stylesheet" href="../..//intel_styles.css" type="text/css" />
+</head>
+<body>
+<div id="banner">
+    <div id="bannerblock">
+      <img src="../..//intel_logo.png" class="intellogo">
+      <h1 class="title">Overview of OpenVINO&trade; toolkit Pre-trained Models</h1>
+    </div>
+  </div>
+<div id="contentblock">
+<h1 id="age-gender-recognition-retail-0013">age-gender-recognition-retail-0013</h1>
+<h2 id="use-case-and-high-level-description">Use Case and High-Level Description</h2>
+<p>Fully convolutional network for simultaneous Age/Gender recognition. The network is able to recognize age of people in [18, 75] years old range, it is not applicable for children since their faces were not in the training set.</p>
+<h2 id="validation-dataset---internal">Validation Dataset - Internal</h2>
+<p>~20,000 unique subjects representing diverse ages, genders, and ethnicities.</p>
+<h2 id="example">Example</h2>
+<table>
+<thead>
+<tr class="header">
+<th align="left">Input Image</th>
+<th align="left">Result</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left"><img src="./age-gender-recognition-retail-0001.jpg" /></td>
+<td align="left">Female, 18.97</td>
+</tr>
+<tr class="even">
+<td align="left"><img src="./age-gender-recognition-retail-0002.png" /></td>
+<td align="left">Male, 26.52</td>
+</tr>
+<tr class="odd">
+<td align="left"><img src="./age-gender-recognition-retail-0003.png" /></td>
+<td align="left">Male, 33.41</td>
+</tr>
+</tbody>
+</table>
+<h2 id="specification">Specification</h2>
+<table>
+<thead>
+<tr class="header">
+<th align="left">Metric</th>
+<th align="left">Value</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">Rotation in-plane</td>
+<td align="left">±45˚</td>
+</tr>
+<tr class="even">
+<td align="left">Rotation out-of-plane</td>
+<td align="left">Yaw: ±45˚ / Pitch: ±45˚</td>
+</tr>
+<tr class="odd">
+<td align="left">Min object width</td>
+<td align="left">62 pixels</td>
+</tr>
+<tr class="even">
+<td align="left">GFlops</td>
+<td align="left">0.09</td>
+</tr>
+<tr class="odd">
+<td align="left">MParams</td>
+<td align="left">2.1</td>
+</tr>
+<tr class="even">
+<td align="left">Source framework</td>
+<td align="left">Caffe*</td>
+</tr>
+</tbody>
+</table>
+<h2 id="accuracy">Accuracy</h2>
+<table>
+<thead>
+<tr class="header">
+<th align="left">Metric</th>
+<th align="left">Value</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">Avg. age error</td>
+<td align="left">6.07 years</td>
+</tr>
+<tr class="even">
+<td align="left">Gender accuracy</td>
+<td align="left">96.66%</td>
+</tr>
+</tbody>
+</table>
+<h2 id="performance-fps">Performance (FPS)</h2>
+<h3 id="configuration-1-ubuntu-16.04-intel-core-i5-6500-cpu-2.90ghz-fixed-gpu-gt2-1.00ghz-fixed-ddr4-pc170002133mhz">Configuration #1: Ubuntu* 16.04, Intel® Core™ i5-6500 CPU @ 2.90GHz fixed, GPU GT2 @ 1.00GHz fixed, DDR4 PC17000/2133MHz</h3>
+<table>
+<colgroup>
+<col width="15%" />
+<col width="21%" />
+<col width="25%" />
+<col width="25%" />
+<col width="11%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th align="left">Caffe* CPU MKL</th>
+<th align="left">Inference Engine CPU</th>
+<th align="left">Inference Engine GPU FP16</th>
+<th align="left">Inference Engine GPU FP32</th>
+<th align="left">OpenCV CPU</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">228.77</td>
+<td align="left">1708.41</td>
+<td align="left">964.02</td>
+<td align="left">761.41</td>
+<td align="left">597.37</td>
+</tr>
+</tbody>
+</table>
+<h3 id="configuration-2-intel-movidius-myriad-2-ncsma2450-intel-core-i5-6500-cpu-2.90ghz-fixed">Configuration #2: Intel® Movidius™ Myriad™ 2 NCS/MA2450, Intel® Core™ i5-6500 CPU @ 2.90GHz fixed</h3>
+<table>
+<thead>
+<tr class="header">
+<th align="left">Inference Engine MYRIAD FP16</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">145.93</td>
+</tr>
+</tbody>
+</table>
+<h3 id="configuration-3-intel-fpga-arria-10-1150-kle-2-0-1_a10dk_fp16_resnet.aocx-intel-coretm-i5-6500-cpu-2.90ghz-fixed">Configuration #3: Intel® FPGA Arria™ 10 1150 KLE (2-0-1_A10DK_FP16_ResNet.aocx), Intel® Core(TM) i5-6500 CPU @ 2.90GHz fixed</h3>
+<table>
+<thead>
+<tr class="header">
+<th align="left">Inference Engine FPGA FP16</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">1633.12</td>
+</tr>
+</tbody>
+</table>
+<h3 id="performance-disclaimer">Performance Disclaimer</h3>
+<p>The benchmark results reported above may need to be revised as additional testing is conducted. The results depend on the specific platform configurations and workloads utilized in the testing, and may not be applicable to any particular user’s components, computer system or workloads. The results are not necessarily representative of other benchmarks and other benchmark results may show greater or lesser impact from mitigations.</p>
+<p>Software and workloads used in performance tests may have been optimized for performance only on Intel microprocessors. Performance tests, such as SYSmark and MobileMark, are measured using specific computer systems, components, software, operations and functions. Any change to any of those factors may cause the results to vary. You should consult other information and performance tests to assist you in fully evaluating your contemplated purchases, including the performance of that product when combined with other products. For more complete information visit www.intel.com/benchmarks.</p>
+<h3 id="optimization-notice">Optimization Notice</h3>
+<p>Intel's compilers may or may not optimize to the same degree for non-Intel microprocessors for optimizations that are not unique to Intel microprocessors. These optimizations include SSE2, SSE3, and SSSE3 instruction sets and other optimizations. Intel does not guarantee the availability, functionality, or effectiveness of any optimization on microprocessors not manufactured by Intel. Microprocessor-dependent optimizations in this product are intended for use with Intel microprocessors. Certain optimizations not specific to Intel microarchitecture are reserved for Intel microprocessors. Please refer to the applicable product User and Reference Guides for more information regarding the specific instruction sets covered by this notice.</p>
+<p>Notice revision #20110804</p>
+<h2 id="inputs">Inputs</h2>
+<ol style="list-style-type: decimal">
+<li>name: &quot;input&quot; , shape: [1x3x62x62] - An input image in [1xCxHxW] format. Expected color order is BGR.</li>
+</ol>
+<h2 id="outputs">Outputs</h2>
+<ol style="list-style-type: decimal">
+<li>name: &quot;age_conv3&quot;, shape: [1, 1, 1, 1] - Estimated age divided by 100.</li>
+<li>name: &quot;prob&quot;, shape: [1, 2, 1, 1] - Softmax output across 2 type classes [female, male]</li>
+</ol>
+<h2 id="legal-information">Legal Information</h2>
+<p>Intel, the Intel logo, Intel Atom, Intel Core, Intel Xeon Phi, VTune and Xeon are trademarks of Intel Corporation in the U.S. and/or other countries.</p>
+<p>*Other names and brands may be claimed as the property of others.</p>
+<p>Copyright 2018 Intel Corporation.</p>
+<p>This software and the related documents are Intel copyrighted materials, and your use of them is governed by the express license under which they were provided to you (License). Unless the License provides otherwise, you may not use, modify, copy, publish, distribute, disclose or transmit this software or the related documents without Intel's prior written permission.</p>
+<p>This software and the related documents are provided as is, with no express or implied warranties, other than those that are expressly stated in the License.</p>
+</div>
+</body>
+</html>

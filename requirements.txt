@@ -31,7 +31,7 @@ scikit-learn==0.20.0
 scipy==1.1.0
 six==1.11.0
 tensorboard==1.9.0
-tensorflow==1.9.0
+tensorflow==2.6.4
 termcolor==1.1.0
 typing==3.6.6
 typing-extensions==3.6.5
